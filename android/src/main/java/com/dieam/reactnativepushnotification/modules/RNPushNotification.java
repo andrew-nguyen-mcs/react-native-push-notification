@@ -319,34 +319,4 @@ public class RNPushNotification extends ReactContextBaseJavaModule implements Ac
     public void deleteChannel(String channel_id) {
       mRNPushNotificationHelper.deleteChannel(channel_id);
     }
-
-    @ReactMethod
-    /**
-     * Delete channel with a given id
-     */
-    public void areNotificationsEnabled(Promise promise) {
-        promise.resolve(NotificationManagerCompat.from(getReactApplicationContext()).areNotificationsEnabled());
-    }
-
-
-    @RequiresApi(33)
-    @ReactMethod
-    public void askForPermission(Promise promise) {
-        ReactActivity activity = (ReactActivity) getCurrentActivity();
-        if (activity == null) {
-            promise.resolve(null);
-        }
-        activity.requestPermissions(new String[]{Manifest.permission.POST_NOTIFICATIONS}, 0671, (PermissionListener) (i, strings, ints) -> {
-            if (i == 0671) {
-                if (ints.length != 0 && ints[0] == PackageManager.PERMISSION_GRANTED) {
-                    promise.resolve(true);
-                    return true;
-                } else {
-                    promise.resolve(false);
-                    return false;
-                }
-            }
-            return false;
-        });
-    }
 }

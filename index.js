@@ -644,12 +644,4 @@ Notifications.Importance = Object.freeze({
   UNSPECIFIED: -1000,
 });
 
-Notifications.areNotificationsEnabled = function () {
-  return NativeModules.ReactNativePushNotification.areNotificationsEnabled()
-}
-
-Notifications.askForPermission = function () {
-  return NativeModules.ReactNativePushNotification.askForPermission()
-}
-
 module.exports = Notifications;
