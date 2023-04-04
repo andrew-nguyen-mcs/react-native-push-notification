@@ -6,7 +6,6 @@
 
 import { AppState, Platform } from 'react-native';
 import { component } from './component';
-import { NativeModules } from 'react-native';
 
 const Notifications = {
   handler: component,
