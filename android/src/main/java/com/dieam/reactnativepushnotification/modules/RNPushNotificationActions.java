@@ -62,7 +62,10 @@ public class RNPushNotificationActions extends BroadcastReceiver {
 
           helper.invokeApp(bundle);
 
-          context.sendBroadcast(new Intent(Intent.ACTION_CLOSE_SYSTEM_DIALOGS));
+        //   context.sendBroadcast(new Intent(Intent.ACTION_CLOSE_SYSTEM_DIALOGS));
+        if (android.os.Build.VERSION.SDK_INT <= 30) {
+            context.sendBroadcast(new Intent(Intent.ACTION_CLOSE_SYSTEM_DIALOGS));
+        }
       } else {
 
         // We need to run this on the main thread, as the React code assumes that is true.
